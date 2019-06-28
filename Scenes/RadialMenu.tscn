@@ -12,14 +12,21 @@ margin_bottom = 2.94739
 script = ExtResource( 1 )
 outerColor = Color( 0.91608, 1, 0.667969, 1 )
 innerColor = Color( 0.533333, 0.992157, 0.388235, 1 )
-sections = 6
+sections = 2
 detailLevel = 3
 
 [node name="HitBox" type="Area2D" parent="."]
 
-[node name="SectionsEdit" type="LineEdit" parent="."]
+[node name="SelectionEdit2" type="SpinBox" parent="."]
 margin_left = 484.212
-margin_top = -1.05264
-margin_right = 542.212
-margin_bottom = 22.9474
-[connection signal="text_entered" from="SectionsEdit" to="." method="_on_SectionsEdit_text_entered"]
+margin_top = 29.4737
+margin_right = 558.212
+margin_bottom = 53.4737
+value = 2.0
+
+[node name="Label" type="Label" parent="SelectionEdit2"]
+margin_top = -13.6842
+margin_right = 40.0
+margin_bottom = 0.315765
+text = "Sections"
+[connection signal="value_changed" from="SelectionEdit2" to="." method="_on_SelectionEdit2_value_changed"]

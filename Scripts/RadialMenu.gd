@@ -18,25 +18,25 @@ var sectionPoints : Array
 var collidersAdded : bool = false
 
 
-func _ready():
+func _ready() -> void:
 	outerCircle = rect_size.x/2
 	innerCircle = rect_size.x/5
 	centerPoint = Vector2(rect_size.x/2,rect_size.y/2)
 	lineAngles = 360 / sections
 	print(lineAngles)
 	
-func _process(delta):
+func _process(delta) -> void:
 	lineAngles = 360 / sections
 	update()
 	if sectionPoints.size() * detailLevel == sections * detailLevel and collidersAdded == false:
 		_addSegmentColliders()
 
-func _draw():
+func _draw() -> void:
 	draw_circle(centerPoint,outerCircle,outerColor)
 	_drawLines()
 	draw_circle(centerPoint,innerCircle,innerColor)
 	
-func _drawLines():
+func _drawLines() -> void:
 	var instance : CollisionPolygon2D = CollisionPolygon2D.new()
 	for i in sections:
 		draw_line(centerPoint,Vector2(-outerCircle,0).rotated(deg2rad(lineAngles *i))+centerPoint,innerColor,2.0,false)
@@ -44,7 +44,7 @@ func _drawLines():
 			sectionPoints.push_back(Vector2(-outerCircle,0).rotated(deg2rad((lineAngles *i)))+centerPoint)
 	print(sectionPoints.size())
 	
-func _addSegmentColliders():
+func _addSegmentColliders() -> void:
 	
 	for c in sections:
 		var instance : CollisionPolygon2D = CollisionPolygon2D.new()
@@ -57,7 +57,7 @@ func _addSegmentColliders():
 	collidersAdded = true
 	
 	
-func _updateSections():
+func _updateSections() -> void:
 	sectionPoints.clear()
 	if sectionPoints.size() < sections: #0 3
 		for j in detailLevel:
@@ -70,17 +70,17 @@ func _updateSections():
 	print("HitboxChildren: ",hitBox.get_children())
 	update()
 	
-	
-	
-	
-	
-	
-	
-	
 
 
 func _on_SectionsEdit_text_entered(new_text):
 	sections = int(new_text)
+	_updateSections()
+	print("SectionPoints: ",sectionPoints)
+	pass # Replace with function body.
+
+
+func _on_SelectionEdit2_value_changed(value):
+	sections = int(value)
 	_updateSections()
 	print("SectionPoints: ",sectionPoints)
 	pass # Replace with function body.
