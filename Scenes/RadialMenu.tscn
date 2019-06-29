@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/RadialMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/MenuIcon.tscn" type="PackedScene" id=2]
 
 [node name="RadialMenu" type="Control"]
 anchor_right = 1.0
@@ -10,17 +11,23 @@ margin_top = 2.94737
 margin_right = -424.369
 margin_bottom = 2.94739
 script = ExtResource( 1 )
-outerColor = Color( 0.91608, 1, 0.667969, 1 )
+outerColor = Color( 0.941176, 0.992157, 0.784314, 1 )
 innerColor = Color( 0.533333, 0.992157, 0.388235, 1 )
 sections = 2
 detailLevel = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MenuIcon" parent="CenterContainer" instance=ExtResource( 2 )]
 
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="SelectionEdit2" type="SpinBox" parent="."]
 margin_left = 484.212
 margin_top = 29.4737
-margin_right = 558.212
+margin_right = 584.212
 margin_bottom = 53.4737
 value = 2.0
 
