@@ -84,3 +84,7 @@ func _on_SelectionEdit2_value_changed(value):
 	_updateSections()
 	print("SectionPoints: ",sectionPoints)
 	pass # Replace with function body.
+	
+func _mouseInteraction():
+	#If mouse position is in area return section = the section
+	pass
